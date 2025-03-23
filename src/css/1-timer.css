@@ -7,7 +7,7 @@ body {
   font-style: normal;
 }
 
-.section {
+.container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -32,9 +32,6 @@ body {
 }
 
 .button {
-  cursor: pointer;
-  border: transparent;
-
   border-radius: 8px;
   padding: 0;
   width: 75px;

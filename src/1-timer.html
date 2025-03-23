@@ -10,14 +10,9 @@
     <link rel="stylesheet" href="./css/styles.css" />
   </head>
   <body>
-    <load
-      src="./partials/header.html"
-      icon-path="./img/sprite.svg#logo"
-      highlight-act="active"
-    />
 
     <main>
-      <section class="section">
+      <div class="container">
         <div class="input_time">
           <input type="text" class="input" id="datetime-picker" placeholder="Select DateTime"/>
           <button type="button" class="button" data-start>Start</button>
@@ -41,10 +36,9 @@
             <span class="label">Seconds</span>
           </div>
         </div>
-      </section>
+      </div>
     </main>
 
-    <load src="./partials/footer.html" />
-    <script type="module" src="./css/1-timer.css"></script>
+    <script src="./js/1-timer.js" type="module"></script>
   </body>
 </html>

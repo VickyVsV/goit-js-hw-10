@@ -1,0 +1,27 @@
+.links-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  gap: 55px;
+}
+
+.link-index {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 100px;
+  color: #fff;
+  text-decoration: none;
+  background-color: #0078d7;
+  border-radius: 10px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  font-size: 16px;
+  text-align: center;
+}
+
+.link-index:hover {
+  background-color: #005a9e;
+  transform: scale(1.1);
+}
