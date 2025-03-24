@@ -21,7 +21,7 @@ body {
   justify-content: space-between;
   align-items: center;
   gap: 10px;
-}
+} 
 
 .input {
   width: 272px;
@@ -31,18 +31,23 @@ body {
   border-radius: 4px;
 }
 
-.button {
+.buttonStart {
   border-radius: 8px;
   padding: 0;
   width: 75px;
   height: 40px;
   box-sizing: border-box;
-  background: #cfcfcf;
+  color: #fff;
 
   font-family: var(--main-font-style);
   font-weight: 500;
   font-size: 16px;
   letter-spacing: 0.04em;
+  background: #4e75ff;
+}
+
+.buttonStart:disabled {
+  background: #cfcfcf;
   color: #989898;
 }
 
@@ -61,8 +66,8 @@ body {
   flex-direction: column;
   align-items: center;
   padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  /*border: 1px solid #ccc;
+  border-radius: 5px;*/
 }
 
 .value {
