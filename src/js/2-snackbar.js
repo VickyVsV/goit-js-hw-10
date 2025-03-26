@@ -10,7 +10,7 @@ const refs = {
   delayEl: document.querySelector('.input-delay'),
 };
 
-let delayValueStr = '';
+//let delayValueStr = '';
 let delayValueNum = 0;
 let radioValue = '';
 
@@ -24,7 +24,7 @@ refs.formEl.addEventListener('submit', evt => {
   console.log(`Selected radio value: ${radioValue}`);
 
   makePromise({
-    value: delayValueStr,
+    value: delayValueNum,
     delay: delayValueNum,
     shouldResolve: radioValue,
   })
@@ -46,7 +46,7 @@ refs.formEl.addEventListener('submit', evt => {
 
 // Получение значения задержки
 refs.delayEl.addEventListener('change', () => {
-  delayValueStr = refs.delayEl.value;
+  //delayValueStr = refs.delayEl.value;
   delayValueNum = Number(refs.delayEl.value);
   console.log(
     `Final delay value: ${delayValueStr} and Number ${delayValueNum}`
