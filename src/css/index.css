@@ -1,12 +1,21 @@
-.links-container {
+:root {
+  --main-font-style: 'Montserrat', sans-serif;
+}
+
+body {
+  font-family: var(--main-font-style);
+  font-style: normal;
+}
+
+.list-links {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  gap: 55px;
+  gap: 70px;
 }
 
-.link-index {
+/*.link-index {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -24,4 +33,50 @@
 .link-index:hover {
   background-color: #005a9e;
   transform: scale(1.1);
+} */
+
+/* Центрирование контейнера */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Полная высота экрана */
+}
+
+.list-item {
+  margin: 0;
+}
+
+.link-btn {
+  display: inline-block;
+  padding: 12px 20px;
+  text-decoration: none;
+  font-size: 22px;
+  font-weight: bold;
+  color: black;
+  border: 2px solid transparent;
+  border-radius: 5px;
+  position: relative;
+  transition: color 0.3s ease-in-out;
+}
+
+.link-btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 2px solid blue;
+  border-radius: 5px;
+  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+  transform: scale(1.3);
+  opacity: 0;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+.link-btn:hover {
+  color: blue;
+}
+
+.link-btn:hover::before {
+  transform: scale(1);
+  opacity: 1;
 }
