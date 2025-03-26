@@ -7,6 +7,7 @@ import 'izitoast/dist/css/iziToast.min.css';
 
 const refs = {
   btnEl: document.querySelector('.buttonStart'),
+  inputEl: document.querySelector('.input'),
   daysEl: document.querySelector('[data-days]'),
   hoursEl: document.querySelector('[data-hours]'),
   minutesEl: document.querySelector('[data-minutes]'),
@@ -17,6 +18,7 @@ let userSelectedDate = null;
 let differenceTime = null;
 let timerId = null;
 refs.btnEl.disabled = true;
+refs.inputEl.disabled = false;
 refs.btnEl.addEventListener('click', onBtnStart);
 
 const options = {
@@ -64,6 +66,7 @@ function convertMs(ms) {
 function onBtnStart() {
   refs.btnEl.disabled = true;
   timerId = setInterval(() => {
+    refs.inputEl.disabled = true;
     onChangeTime()
   }, 1000);
   
@@ -73,13 +76,22 @@ function onChangeTime(){
   const dataNow = Date.now();
   differenceTime = userSelectedDate.selectedDates[0] - dataNow;
   console.log(differenceTime);
-  const convertData = convertMs(differenceTime);
-  console.log(convertData.days, convertData.hours, convertData.minutes, convertData.seconds);
 
-  refs.daysEl.textContent = addLeadingZero(convertData.days);
-  refs.minutesEl.textContent = addLeadingZero(convertData.minutes);
-  refs.hoursEl.textContent = addLeadingZero(convertData.hours);
-  refs.secondsEl.textContent = addLeadingZero(convertData.seconds);
+  if(differenceTime > 0){
+    const convertData = convertMs(differenceTime);
+    console.log(convertData.days, convertData.hours, convertData.minutes, convertData.seconds);
+  
+    refs.daysEl.textContent = addLeadingZero(convertData.days);
+    refs.minutesEl.textContent = addLeadingZero(convertData.minutes);
+    refs.hoursEl.textContent = addLeadingZero(convertData.hours);
+    refs.secondsEl.textContent = addLeadingZero(convertData.seconds);
+  } else {
+    refs.inputEl.disabled = false;
+    refs.daysEl.textContent = "00";
+    refs.minutesEl.textContent = "00";
+    refs.hoursEl.textContent = "00";
+    refs.secondsEl.textContent = "00";
+  }
 }
 
 function addLeadingZero(value){
