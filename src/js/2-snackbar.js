@@ -10,7 +10,6 @@ const refs = {
   delayEl: document.querySelector('.input-delay'),
 };
 
-//let delayValueStr = '';
 let delayValueNum = 0;
 let radioValue = '';
 
@@ -20,11 +19,10 @@ refs.formEl.addEventListener('submit', evt => {
   evt.preventDefault(); // Предотвращаем отправку формы по умолчанию
 
   const selectedRadio = Array.from(refs.radioEl).find(radio => radio.checked);
+  delayValueNum = Number(refs.delayEl.value);
   radioValue = selectedRadio.value; // Сохраняем значение выбранной радиокнопки
-  console.log(`Selected radio value: ${radioValue}`);
 
   makePromise({
-    value: delayValueNum,
     delay: delayValueNum,
     shouldResolve: radioValue,
   })
@@ -45,22 +43,18 @@ refs.formEl.addEventListener('submit', evt => {
 });
 
 // Получение значения задержки
-refs.delayEl.addEventListener('change', () => {
-  //delayValueStr = refs.delayEl.value;
+/* refs.delayEl.addEventListener('change', () => {
   delayValueNum = Number(refs.delayEl.value);
-  console.log(
-    `Final delay value: ${delayValueStr} and Number ${delayValueNum}`
-  );
-});
+}); */
 
 // Promice
-const makePromise = ({ value, delay, shouldResolve }) => {
+const makePromise = ({ delay, shouldResolve }) => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      if ((shouldResolve === "fulfilled")) {
-        resolve(value);
+      if (shouldResolve === 'fulfilled') {
+        resolve(delay);
       } else {
-        reject(value);
+        reject(delay);
       }
     }, delay);
   });

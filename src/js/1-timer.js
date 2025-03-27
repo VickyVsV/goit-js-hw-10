@@ -7,14 +7,14 @@ import 'izitoast/dist/css/iziToast.min.css';
 
 const refs = {
   btnEl: document.querySelector('.buttonStart'),
-  inputEl: document.querySelector('.input'),
+  inputEl: document.querySelector('input[id=datetime-picker]'),
   daysEl: document.querySelector('[data-days]'),
   hoursEl: document.querySelector('[data-hours]'),
   minutesEl: document.querySelector('[data-minutes]'),
   secondsEl: document.querySelector('[data-seconds]'),
 };
 
-let userSelectedDate = null;
+
 let differenceTime = null;
 let timerId = null;
 refs.btnEl.disabled = true;
@@ -37,12 +37,12 @@ const options = {
         message: 'Please choose a date in the future',
         position: 'topRight',
       });
-      console.log('selectedDates[0]');
+      //console.log('selectedDates[0]');
     }
   },
 };
 
-userSelectedDate = flatpickr('#datetime-picker', options);
+const userSelectedDate = flatpickr('#datetime-picker', options);
 
 function convertMs(ms) {
   // Number of milliseconds per unit of time
@@ -75,26 +75,28 @@ function onBtnStart() {
 function onChangeTime(){
   const dataNow = Date.now();
   differenceTime = userSelectedDate.selectedDates[0] - dataNow;
-  console.log(differenceTime);
+  //console.log(differenceTime);
 
   if(differenceTime > 0){
     const convertData = convertMs(differenceTime);
-    console.log(convertData.days, convertData.hours, convertData.minutes, convertData.seconds);
+    //console.log(convertData.days, convertData.hours, convertData.minutes, convertData.seconds);
   
     refs.daysEl.textContent = addLeadingZero(convertData.days);
     refs.minutesEl.textContent = addLeadingZero(convertData.minutes);
     refs.hoursEl.textContent = addLeadingZero(convertData.hours);
     refs.secondsEl.textContent = addLeadingZero(convertData.seconds);
   } else {
+    clearInterval(timerId);
     refs.inputEl.disabled = false;
+    
     refs.daysEl.textContent = "00";
     refs.minutesEl.textContent = "00";
     refs.hoursEl.textContent = "00";
-    refs.secondsEl.textContent = "00";
+    refs.secondsEl.textContent = "00"; 
   }
 }
 
 function addLeadingZero(value){
   //return String(value).padStart(2, 0);
-  return value.toString().padStart(2, 0);
+  return value.toString().padStart(2, "0");
 }
